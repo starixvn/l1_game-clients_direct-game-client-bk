@@ -23,7 +23,7 @@ const defaultConfig: gc.Configs.SiteConfigs = {
         proxyPath: "sedie",
         route: "sedie",
     },
-    mainObserverNamespace: "Sedie3",
+    mainObserverNamespace: "SeDie",
     tolgeeUrl: "",
     storagePrefixKey: "Sedie3",
     backgroundNoTranslate: true,
