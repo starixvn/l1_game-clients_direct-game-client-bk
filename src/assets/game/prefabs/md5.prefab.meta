@@ -2,12 +2,12 @@
   "ver": "1.1.45",
   "importer": "prefab",
   "imported": true,
-  "uuid": "c80604f2-8da7-42e4-8004-9d0b114e0709",
+  "uuid": "c1b98668-1e47-4be6-8165-383bfac55fd5",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "card-decor"
+    "syncNodeName": "md5"
   }
 }
