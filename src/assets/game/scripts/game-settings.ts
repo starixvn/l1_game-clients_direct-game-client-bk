@@ -6,14 +6,14 @@ import { sharedContainer } from "../../scripts/shared-container";
 export const settings = {
     id: 2,
     name: "SeDie",
-    namespaces: ["SeDie3"],
+    namespaces: ["SeDie"],
     durations: {
         wholeRound: 39,
         lockingBet: 3,
         placingBet: 30,
         generatingResult: 1,
         showingResult: 5,
-        startRound: 1,
+        startRound: 3,
     },
     numberOfRoundHistory: 100,
 };

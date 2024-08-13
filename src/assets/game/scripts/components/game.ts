@@ -9,9 +9,9 @@ import { AudioContainer } from "../../../../extensions/shared-components/assets/
 import { ChipFlying } from "../../../../extensions/shared-components/assets/game/chip-flying/scripts/components/chip-flying";
 import { CardModel } from "../../../../extensions/shared-components/assets/game/poker-cards/scripts/poker-card";
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
-import { WinningResult } from "../../../../extensions/shared-components/assets/shared/common-components/winning-result/scripts/winning-result";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
+import { Plate } from "./plate";
 
 startGame(settings.name, containerOptions, siteConfigs, settings.namespaces);
 const { Rounds, Connection, HideGame, Settlements, FormatUtils, RoundHistories, GameBaccaratX } = gc;
@@ -33,15 +33,13 @@ export default class Game extends GameComponent {
     override containerOptions = containerOptions;
 
     @property(Node)
-    nodeWinNotice: Node = null;
-
-    @property(Node)
     nodeAudioContainer: Node = null;
+
+    @property(Plate)
+    compPlate: Plate = null;
 
     protected enableFixHandleFinish = true;
     private audioContainer: AudioContainer = null;
-
-    private soundWinChoice = ["player", "banker", "tie"];
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
@@ -54,36 +52,21 @@ export default class Game extends GameComponent {
         settlementResult: gc.GameServiceMessage.TSettlementResult
     ) {
         if (result) {
-            const winning = this.getWinningResult();
-            winning.hideQuickly();
-            if (hasAnimation) {
-                //
-                // await this.baccaratXCardsUi.openCards(result as any, settlementResult, hasAnimation);
-            } else {
-                // this.baccaratXCardsUi.openCards(result as any, settlementResult, hasAnimation);
-            }
-            const winChoice = this.soundWinChoice.find((choice) => settlementResult[choice]);
-            this.playSound(`${winChoice}-${gc.Translator.getLanguageId()}`);
-            winning?.setSettlementResult(settlementResult);
-            winning?.show();
+            this.compPlate.openPlate(hasAnimation);
+            this.compPlate.setDots(result);
         }
-    }
-
-    getWinningResult() {
-        return this.nodeWinNotice.getComponent(WinningResult);
     }
 
     renderCurrentFinish(currentFinish: gc.GameServiceMessage.Finish) {
         if (!currentFinish || !this.enableFixHandleFinish) {
             return;
         }
-        const { result, settlementResult, usedCardIndexes } = currentFinish as any;
+        const { result, settlementResult } = currentFinish as any;
 
         if (!this.isValidResult(result, settlementResult)) {
             return;
         }
 
-        // this.baccaratXCardsUi.currentCardIndex = usedCardIndexes[0];
         this.showResult(result, true, settlementResult).then(() => {
             this.finishShowResult(result, settlementResult);
             this.chipFlying.callActionPayChips();
@@ -102,27 +85,10 @@ export default class Game extends GameComponent {
             const { result, settlementResult } = lastRound;
             const animated = firstJoinGameHistory.animationHighlight;
             if (animated) {
-                this.parseOddsMultipliers(lastRound);
-
                 this.showResult(result, false, settlementResult);
                 return;
             }
         }
-    }
-
-    @handle(GameBaccaratX.Multiplier.BaccaratMultipliersHandler, (handler, lastRound) => handler.parseOddsMultiplers(lastRound))
-    parseOddsMultipliers(lastRound) {
-        return lastRound;
-    }
-
-    @render(Rounds.RoundTimeStore, (store) => store.isStartingRound)
-    disableWinNotice(isStartingRound: boolean) {
-        isStartingRound && this.getWinningResult()?.hideQuickly();
-    }
-
-    @render(GameBaccaratX.Shoe.ShoeStore, (store) => store.newShoePhase)
-    disableWinNotice1(newShoePhase: boolean) {
-        newShoePhase && this.getWinningResult()?.hideQuickly();
     }
 
     @render(Rounds.RoundTimeStore, (store) => store.roundState)
