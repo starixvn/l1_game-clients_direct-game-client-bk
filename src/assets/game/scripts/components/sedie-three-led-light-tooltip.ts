@@ -11,7 +11,7 @@ const BetChoiceType = {
 };
 
 @ccclass()
-export class Sedie3LedLightToolTip extends LedLightTooltip {
+export class SedieThreeLedLightToolTip extends LedLightTooltip {
     @property(Label)
     lblRed: Label = null;
 
