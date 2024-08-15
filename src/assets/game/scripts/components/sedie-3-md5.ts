@@ -12,7 +12,7 @@ export type ExtraInfos = {
 };
 
 @ccclass()
-export class SedieMD5 extends MD5Component {
+export class Sedie3MD5 extends MD5Component {
     readonly CHIP_RED = `<img src="chip_do" />`;
     readonly CHIP_WHITE = `<img src="chip_trang" />`;
 

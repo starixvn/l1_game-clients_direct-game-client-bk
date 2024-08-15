@@ -43,7 +43,6 @@ export class Plate extends ObserverComponent {
         const opacityComp = this.nodePlate.getComponent(UIOpacity);
         if (animated) {
             tween(this.nodePlate).to(this.openPlateDuration, { position: platePos }, { easing: "sineInOut" }).start();
-
             tween(opacityComp).delay(this.openPlateDuration).to(0.2, { opacity: 0 }).start();
         } else {
             this.nodePlate.position = v3(platePos);
@@ -59,7 +58,6 @@ export class Plate extends ObserverComponent {
             tween(this.nodePlate)
                 .to(this.openPlateDuration, { position: v3(0, 0) })
                 .start();
-
             tween(opacityComp).delay(this.openPlateDuration).to(0, { opacity: 255 }).start();
         } else {
             opacityComp.opacity = 255;
