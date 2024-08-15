@@ -6,7 +6,6 @@ export const languages = {
         "bet_amount_of_any_choice_incorrect": "Jumlah Taruhan Tidak Valid",
         "bet_choice": "Pilihan Taruhan",
         "bet_detail": "Detail Bet",
-        "bet_details_classic_slot_non_winning_payline": "Paylines yang tidak menang",
         "bet_history": "Sejarah Taruhan",
         "bet_limit": "Batas taruhan",
         "bet_option_even": "Genap",
@@ -106,6 +105,7 @@ export const languages = {
         "min_bet_hand": "Taruhan minimum untuk tangan ini adalah %{minBet}",
         "name_invalid": "Nama panggilan yang dimasukkan tidak valid, harap coba lagi.",
         "nickname_requirement": "Catatan:\n+ Nama panggilan harus antara 3 dan 14 karakter.\n+ Tidak boleh mengandung spasi, karakter khusus, dan karakter non-Inggris.\n+ Tidak dapat mengubah nama panggilan setelah mengirimkan. ",
+        "non_winning_payline": "Paylines yang tidak menang",
         "not_enough_money": "Akun Anda memiliki dana yang tidak mencukupi.",
         "notice": "ULASAN",
         "odds": "Odds",
@@ -169,6 +169,10 @@ export const languages = {
         "win": "Menang",
         "win_loss": "Menang Kalah",
         "you_reach_max_win": "Anda mencapai Maksimal Menang"
+    },
+    "SeDie3": {
+        "glossary_red": "Merah",
+        "glossary_white": "Putih"
     }
 };
 

@@ -6,7 +6,6 @@ export const languages = {
         "bet_amount_of_any_choice_incorrect": "Tiền cược của một trong các cửa không hợp lệ.",
         "bet_choice": "Lựa Chọn",
         "bet_detail": "Chi Tiết Cược",
-        "bet_details_classic_slot_non_winning_payline": "Không có dòng cược thắng",
         "bet_history": "Lịch Sử",
         "bet_limit": "Giới Hạn Cược",
         "bet_option_even": "Chẵn",
@@ -106,6 +105,7 @@ export const languages = {
         "min_bet_hand": "Tiền cược tối thiểu của tay bài này là %{minBet}",
         "name_invalid": "Tên nhân vật không hợp lệ.",
         "nickname_requirement": "Lưu ý:\n+ Tên nhân vật phải có từ 3 đến 14 ký tự.\n+ Không gõ dấu tiếng việt, không chứa khoảng trắng và các ký tự đặc biệt.\n+ Không thể đổi tên nhân vật sau khi tạo.",
+        "non_winning_payline": "Không có dòng cược thắng",
         "not_enough_money": "Bạn hiện không có đủ tiền để cược.",
         "notice": "THÔNG BÁO",
         "odds": "Tỷ Lệ Cược",
@@ -169,6 +169,10 @@ export const languages = {
         "win": "Thắng",
         "win_loss": "Thắng Thua",
         "you_reach_max_win": "Bạn Đã Đạt Mức Tiền Thắng Tối Đa"
+    },
+    "SeDie3": {
+        "glossary_red": "Đỏ",
+        "glossary_white": "Trắng"
     }
 };
 

@@ -1,4 +1,11 @@
 {
     "lobbyNames": {},
-    "gameNames": {}
+    "gameNames": {
+        "en": "Se Die 3",
+        "id": "Se Die 3",
+        "th": "Se Die 3",
+        "vi": "Se Die 3",
+        "zh_cn": "Se Die 3",
+        "zh_tw": "Se Die 3"
+    }
 }
