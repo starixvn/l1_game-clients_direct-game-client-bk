@@ -5,7 +5,7 @@ import { LedLightTooltip } from "../../../../extensions/shared-components/assets
 
 const { ccclass, property } = _decorator;
 
-const BetChoiceType = {
+const BetChoice = {
     RED: "red",
     WHITE: "white",
 };
@@ -24,7 +24,7 @@ export class SedieThreeLedLightToolTip extends LedLightTooltip {
         const { roundId, settlementResult, result } = ledLightInfo;
 
         this.roundId.string = `#${roundId}`;
-        const choiceWin = settlementResult[BetChoiceType.RED] ? BetChoiceType.RED : BetChoiceType.WHITE;
+        const choiceWin = settlementResult[BetChoice.RED] ? BetChoice.RED : BetChoice.WHITE;
         this.result.string = gc.Translator.gameTranslate(`glossary_${choiceWin}`).toUpperCase();
 
         let countRed = 0;

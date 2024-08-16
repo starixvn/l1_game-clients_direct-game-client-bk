@@ -44,8 +44,8 @@ export default class Game extends GameComponent {
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
-        super.onLoad();
         this.compPlate = this.nodePlate.getComponent(Plate);
+        super.onLoad();
     }
 
     async showResult(
