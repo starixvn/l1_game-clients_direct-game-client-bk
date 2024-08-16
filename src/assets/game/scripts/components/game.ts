@@ -35,15 +35,17 @@ export default class Game extends GameComponent {
     @property(Node)
     nodeAudioContainer: Node = null;
 
-    @property(Plate)
-    compPlate: Plate = null;
+    @property(Node)
+    nodePlate: Node = null;
 
+    compPlate: Plate = null;
     protected enableFixHandleFinish = true;
     private audioContainer: AudioContainer = null;
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
         super.onLoad();
+        this.compPlate = this.nodePlate.getComponent(Plate);
     }
 
     async showResult(
