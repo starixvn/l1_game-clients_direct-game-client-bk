@@ -54,8 +54,8 @@ export default class Game extends GameComponent {
         settlementResult: gc.GameServiceMessage.TSettlementResult
     ) {
         if (result) {
-            this.compPlate.openPlate(hasAnimation);
             this.compPlate.setDots(result as IResult);
+            this.compPlate.openPlate(hasAnimation);
         }
     }
 

@@ -6,7 +6,7 @@ import { BaseResultBodyItem } from "../../../../extensions/shared-components/ass
 const { ccclass, property } = _decorator;
 
 @ccclass()
-export class SedieThreeResultBodyItem extends BaseResultBodyItem {
+export class SeDieThreeResultBodyItem extends BaseResultBodyItem {
     @property(SpriteFrame)
     sprRed: SpriteFrame = null;
 

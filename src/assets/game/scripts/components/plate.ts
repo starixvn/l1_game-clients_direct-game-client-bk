@@ -49,12 +49,8 @@ export class Plate extends ObserverComponent {
         }
     }
 
-    closePlate(animated = false) {
-        if (animated) {
-            AnimationUtils.playSpine(this.spinePlate, PlateAnimation.CLOSE);
-        } else {
-            AnimationUtils.playSpine(this.spinePlate, PlateAnimation.CLOSE, false, 0);
-        }
+    async closePlate() {
+        await AnimationUtils.playSpine(this.spinePlate, PlateAnimation.CLOSE);
     }
 
     @render(gc.Rounds.RoundStore, (store) => store.clientRoundId)
@@ -74,8 +70,7 @@ export class Plate extends ObserverComponent {
     @render(gc.Rounds.RoundTimeStore, (store) => store.isStartRound)
     async shakePlate(isStartRound: boolean) {
         if (isStartRound) {
-            this.closePlate(true);
-            await AnimationUtils.delayTime(this.openPlateDuration);
+            await this.closePlate();
             this.playSoundShake();
             AnimationUtils.playSpine(this.spinePlate, PlateAnimation.SHAKE);
         }
