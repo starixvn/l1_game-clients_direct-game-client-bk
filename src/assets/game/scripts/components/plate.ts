@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, sp, Sprite, SpriteFrame } from "cc";
+import { _decorator, Node, sp, Sprite, SpriteFrame } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
@@ -14,6 +14,12 @@ const PlateAnimation = {
     CLOSE: "close",
 };
 
+export interface IResult {
+    red1: boolean;
+    red2: boolean;
+    red3: boolean;
+}
+
 @ccclass()
 export class Plate extends ObserverComponent {
     @property(sp.Skeleton)
@@ -21,6 +27,9 @@ export class Plate extends ObserverComponent {
 
     @property({ type: Sprite })
     spriteDots: Sprite[] = [];
+
+    @property(Node)
+    nodeRandomPos: Node = null;
 
     @property(SpriteFrame)
     frameDotRed: SpriteFrame = null;
@@ -30,16 +39,9 @@ export class Plate extends ObserverComponent {
 
     private readonly openPlateDuration = 0.5;
     private audioShakeKey = "shake";
-
-    showDots(show: boolean) {
-        this.spriteDots.forEach((dot) => {
-            dot.node.active = show;
-        });
-    }
+    private roundId = 0;
 
     openPlate(animated: boolean) {
-        this.showDots(true);
-
         if (animated) {
             AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN);
         } else {
@@ -55,8 +57,16 @@ export class Plate extends ObserverComponent {
         }
     }
 
-    setDots(result) {
+    @render(gc.Rounds.RoundStore, (store) => store.clientRoundId)
+    renderRoundId(roundId: number) {
+        roundId > 0 && (this.roundId = roundId);
+    }
+
+    setDots(result: IResult) {
+        const randomOption = this.nodeRandomPos.children[this.roundId % 5];
+
         Object.keys(result).forEach((key, index) => {
+            this.spriteDots[index].node.position = randomOption.children[index].position;
             this.spriteDots[index].spriteFrame = result[key] ? this.frameDotRed : this.frameDotWhite;
         });
     }

@@ -11,7 +11,7 @@ import { CardModel } from "../../../../extensions/shared-components/assets/game/
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
-import { Plate } from "./plate";
+import { IResult, Plate } from "./plate";
 
 startGame(settings.name, containerOptions, siteConfigs, settings.namespaces);
 const { Rounds, Connection, HideGame, Settlements, FormatUtils, RoundHistories, GameBaccaratX } = gc;
@@ -55,7 +55,7 @@ export default class Game extends GameComponent {
     ) {
         if (result) {
             this.compPlate.openPlate(hasAnimation);
-            this.compPlate.setDots(result);
+            this.compPlate.setDots(result as IResult);
         }
     }
 
