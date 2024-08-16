@@ -788,7 +788,7 @@
     },
     "_cacheMode": 0,
     "_imageAtlas": {
-      "__uuid__": "233ce305-d7f1-4c6c-9634-36d205e67457",
+      "__uuid__": "2d67d332-0b65-4c26-aacf-03f54c9217cc",
       "__expectedType__": "cc.SpriteAtlas"
     },
     "_handleTouchEvent": true,

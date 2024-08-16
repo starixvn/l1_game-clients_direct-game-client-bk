@@ -2561,7 +2561,7 @@
       "tie": 2
     },
     "image": {
-      "__uuid__": "2d67d332-0b65-4c26-aacf-03f54c9217cc@1238c",
+      "__uuid__": "2d67d332-0b65-4c26-aacf-03f54c9217cc@ea9ba",
       "__expectedType__": "cc.SpriteFrame"
     }
   },
@@ -2572,7 +2572,7 @@
       "tie": 2
     },
     "image": {
-      "__uuid__": "2d67d332-0b65-4c26-aacf-03f54c9217cc@90c95",
+      "__uuid__": "2d67d332-0b65-4c26-aacf-03f54c9217cc@ead18",
       "__expectedType__": "cc.SpriteFrame"
     }
   },
