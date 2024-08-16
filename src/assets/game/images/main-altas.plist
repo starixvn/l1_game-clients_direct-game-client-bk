@@ -4,21 +4,6 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>bat.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{170,163}</string>
-                <key>spriteSourceSize</key>
-                <string>{170,163}</string>
-                <key>textureRect</key>
-                <string>{{3,721},{170,163}}</string>
-                <key>textureRotated</key>
-                <true/>
-            </dict>
             <key>betoption-main-highlight-bg.png</key>
             <dict>
                 <key>aliases</key>
@@ -236,11 +221,11 @@
                 <key>spriteOffset</key>
                 <string>{0,0}</string>
                 <key>spriteSize</key>
-                <string>{184,178}</string>
+                <string>{178,172}</string>
                 <key>spriteSourceSize</key>
-                <string>{184,178}</string>
+                <string>{178,172}</string>
                 <key>textureRect</key>
-                <string>{{774,541},{184,178}}</string>
+                <string>{{774,541},{178,172}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -255,7 +240,7 @@
                 <key>spriteSourceSize</key>
                 <string>{55,49}</string>
                 <key>textureRect</key>
-                <string>{{960,541},{55,49}}</string>
+                <string>{{954,541},{55,49}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -303,7 +288,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ea4dbb5d7818c4e7dc0cc329d461c2c8:2cc17b62179d84cfbedc9566db344427:c267e8d10c0bc09dc57664e81b0ef2af$</string>
+            <string>$TexturePacker:SmartUpdate:fe4aa36d877444ed123724939bf3d857:1ce4881036dab5f9e7c47da6cbfd18eb:c267e8d10c0bc09dc57664e81b0ef2af$</string>
             <key>textureFileName</key>
             <string>main-altas.png</string>
         </dict>
