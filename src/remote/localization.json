@@ -1,5 +1,12 @@
 {
-    "lobbyNames": {},
+    "lobbyNames": {
+        "en": "SE DIE 3X",
+        "id": "SE DIE 3X",
+        "th": "SE DIE 3X",
+        "vi": "XÓC ĐĨA 3 XU",
+        "zh_cn": "XÓC ĐĨA 3 XU",
+        "zh_tw": "XÓC ĐĨA 3 XU"
+    },
     "gameNames": {
         "en": "Se Die 3",
         "id": "Se Die 3",

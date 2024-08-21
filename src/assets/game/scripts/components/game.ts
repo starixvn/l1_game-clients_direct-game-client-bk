@@ -1,3 +1,4 @@
+import { WinningResult } from "./../../../../extensions/shared-components/assets/shared/common-components/winning-result/scripts/winning-result";
 import "./../../../resources/i18n";
 
 import gc from "@sg/game-client-base";
@@ -38,6 +39,9 @@ export default class Game extends GameComponent {
     @property(Node)
     nodePlate: Node = null;
 
+    @property(Node)
+    nodeWinning: Node = null;
+
     compPlate: Plate = null;
     protected enableFixHandleFinish = true;
     private audioContainer: AudioContainer = null;
@@ -55,7 +59,8 @@ export default class Game extends GameComponent {
     ) {
         if (result) {
             this.compPlate.setDots(result as IResult);
-            this.compPlate.openPlate(hasAnimation);
+            await this.compPlate.openPlate(hasAnimation);
+            this.nodeWinning.getComponent(WinningResult).setSettlementResult(settlementResult);
         }
     }
 

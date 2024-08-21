@@ -172,7 +172,9 @@ export const languages = {
     },
     "SeDie3": {
         "glossary_red": "红",
-        "glossary_white": "白"
+        "glossary_white": "白",
+        "red_win": "红赢",
+        "white_win": "白赢"
     }
 };
 

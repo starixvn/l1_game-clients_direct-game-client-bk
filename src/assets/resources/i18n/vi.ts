@@ -171,8 +171,11 @@ export const languages = {
         "you_reach_max_win": "Bạn Đã Đạt Mức Tiền Thắng Tối Đa"
     },
     "SeDie3": {
+        "game_icon_name": "XÓC ĐĨA 3 XU",
         "glossary_red": "Đỏ",
-        "glossary_white": "Trắng"
+        "glossary_white": "Trắng",
+        "red_win": "ĐỎ THẮNG",
+        "white_win": "TRẮNG THẮNG"
     }
 };
 

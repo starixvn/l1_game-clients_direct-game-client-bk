@@ -41,9 +41,9 @@ export class Plate extends ObserverComponent {
     private audioShakeKey = "shake";
     private roundId = 0;
 
-    openPlate(animated: boolean) {
+    async openPlate(animated: boolean) {
         if (animated) {
-            AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN);
+            await AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN);
         } else {
             AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN, false, 0);
         }

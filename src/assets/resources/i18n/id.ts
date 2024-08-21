@@ -172,7 +172,9 @@ export const languages = {
     },
     "SeDie3": {
         "glossary_red": "Merah",
-        "glossary_white": "Putih"
+        "glossary_white": "Putih",
+        "red_win": "MERAH MENANG",
+        "white_win": "PUTIH MENANG"
     }
 };
 
