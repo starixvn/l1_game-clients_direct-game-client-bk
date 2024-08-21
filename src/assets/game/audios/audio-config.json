@@ -3,5 +3,65 @@
         "bundle": "resources",
         "path": "shake",
         "isLazyLoad": true
+    },
+    "red_wins_zh_cn": {
+        "bundle": "resources",
+        "path": "winning/red_wins_zh_cn",
+        "isLazyLoad": true
+    },
+    "red_wins_en": {
+        "bundle": "resources",
+        "path": "winning/red_wins_en",
+        "isLazyLoad": true
+    },
+    "red_wins_id": {
+        "bundle": "resources",
+        "path": "winning/red_wins_id",
+        "isLazyLoad": true
+    },
+    "red_wins_th": {
+        "bundle": "resources",
+        "path": "winning/red_wins_th",
+        "isLazyLoad": true
+    },
+    "red_wins_zh_tw": {
+        "bundle": "resources",
+        "path": "winning/red_wins_zh_tw",
+        "isLazyLoad": true
+    },
+    "red_wins_vi": {
+        "bundle": "resources",
+        "path": "winning/red_wins_vi",
+        "isLazyLoad": true
+    },
+    "white_wins_zh_cn": {
+        "bundle": "resources",
+        "path": "winning/white_wins_zh_cn",
+        "isLazyLoad": true
+    },
+    "white_wins_en": {
+        "bundle": "resources",
+        "path": "winning/white_wins_en",
+        "isLazyLoad": true
+    },
+    "white_wins_id": {
+        "bundle": "resources",
+        "path": "winning/white_wins_id",
+        "isLazyLoad": true
+    },
+    "white_wins_th": {
+        "bundle": "resources",
+        "path": "winning/white_wins_th",
+        "isLazyLoad": true
+    },
+    "white_wins_zh_tw": {
+        "bundle": "resources",
+        "path": "winning/white_wins_zh_tw",
+        "isLazyLoad": true
+    },
+    "white_wins_vi": {
+        "bundle": "resources",
+        "path": "winning/white_wins_vi",
+        "isLazyLoad": true
     }
 }

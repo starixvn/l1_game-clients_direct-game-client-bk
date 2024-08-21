@@ -45,10 +45,12 @@ export default class Game extends GameComponent {
     compPlate: Plate = null;
     protected enableFixHandleFinish = true;
     private audioContainer: AudioContainer = null;
+    private winningResult: WinningResult = null;
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
         this.compPlate = this.nodePlate.getComponent(Plate);
+        this.winningResult = this.nodeWinning.getComponent(WinningResult);
         super.onLoad();
     }
 
@@ -60,7 +62,8 @@ export default class Game extends GameComponent {
         if (result) {
             this.compPlate.setDots(result as IResult);
             await this.compPlate.openPlate(hasAnimation);
-            this.nodeWinning.getComponent(WinningResult).setSettlementResult(settlementResult);
+            this.winningResult.setSettlementResult(settlementResult);
+            this.winningResult.show();
         }
     }
 
@@ -105,5 +108,10 @@ export default class Game extends GameComponent {
         } else if (roundState === Rounds.ROUND_STATE.SHOW_RESULT) {
             this.audioContainer.updateVolumeMusicSource(1, 3);
         }
+    }
+
+    @render(Rounds.RoundTimeStore, (store) => store.isStartingRound)
+    disableWinNotice(isStartingRound: boolean) {
+        isStartingRound && this.winningResult.hideQuickly();
     }
 }

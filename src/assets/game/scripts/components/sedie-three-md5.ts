@@ -1,4 +1,4 @@
-import { _decorator } from "cc";
+import { _decorator, tween, UIOpacity } from "cc";
 
 import MD5Component, { MD5Type } from "../../../../extensions/shared-components/assets/game/md5/scripts/md5-component";
 
@@ -15,6 +15,8 @@ export type ExtraInfos = {
 export class SeDieThreeMD5 extends MD5Component {
     readonly CHIP_RED = `<img src="chip_do" />`;
     readonly CHIP_WHITE = `<img src="chip_trang" />`;
+
+    private tipForHash = false;
 
     generateMD5Result(data: MD5Type) {
         let result = "";
@@ -40,5 +42,18 @@ export class SeDieThreeMD5 extends MD5Component {
         };
 
         return chips.hasOwnProperty(totalRed) ? chips[totalRed] : "";
+    }
+
+    protected setDataTip(data: gc.GameServiceMessage.ResultHash) {
+        super.setDataTip(data);
+        this.tipForHash = !!data.hashValue;
+    }
+
+    protected showTooltip() {
+        if (this.tipString && this.md5Tip && !this.tipForHash) {
+            this.md5Tip.setData(this.tipString);
+            this.md5Tip.show(true);
+            tween(this.md5Tip.node.getComponent(UIOpacity)).to(0.2, { opacity: 255 }).delay(2).to(0.1, { opacity: 0 }).start();
+        }
     }
 }
