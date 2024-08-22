@@ -175,7 +175,7 @@ export const languages = {
         "game_name": "色碟 3X",
         "glossary_red": "紅",
         "glossary_white": "白",
-        "red_win": "\n紅贏",
+        "red_win": "紅贏",
         "white_win": "白贏"
     }
 };
