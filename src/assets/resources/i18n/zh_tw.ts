@@ -171,7 +171,9 @@ export const languages = {
         "you_reach_max_win": "您達到了最大勝利"
     },
     "SeDie3": {
-        "glossary_red": "红",
+        "game_icon_name": "色碟 3X",
+        "game_name": "色碟 3X",
+        "glossary_red": "紅",
         "glossary_white": "白",
         "red_win": "\n紅贏",
         "white_win": "白贏"

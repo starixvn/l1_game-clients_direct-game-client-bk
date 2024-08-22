@@ -172,6 +172,7 @@ export const languages = {
     },
     "SeDie3": {
         "game_icon_name": "XÓC ĐĨA 3 XU",
+        "game_name": "Xóc Đĩa 3 Xu",
         "glossary_red": "Đỏ",
         "glossary_white": "Trắng",
         "red_win": "ĐỎ THẮNG",
