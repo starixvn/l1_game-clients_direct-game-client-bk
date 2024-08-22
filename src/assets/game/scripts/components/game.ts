@@ -10,6 +10,7 @@ import { AudioContainer } from "../../../../extensions/shared-components/assets/
 import { ChipFlying } from "../../../../extensions/shared-components/assets/game/chip-flying/scripts/components/chip-flying";
 import { CardModel } from "../../../../extensions/shared-components/assets/game/poker-cards/scripts/poker-card";
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
+import { FunctionUtils, isIOS } from "../../../../extensions/shared-components/assets/shared/utils";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
 import { IResult, Plate } from "./plate";
@@ -67,7 +68,7 @@ export default class Game extends GameComponent {
         }
     }
 
-    renderCurrentFinish(currentFinish: gc.GameServiceMessage.Finish) {
+    async renderCurrentFinish(currentFinish: gc.GameServiceMessage.Finish) {
         if (!currentFinish || !this.enableFixHandleFinish) {
             return;
         }
@@ -75,6 +76,9 @@ export default class Game extends GameComponent {
 
         if (!this.isValidResult(result, settlementResult)) {
             return;
+        }
+        if (isIOS()) {
+            await FunctionUtils.delay(500);
         }
 
         this.showResult(result, true, settlementResult).then(() => {
