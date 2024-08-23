@@ -37,7 +37,6 @@ export class Plate extends ObserverComponent {
     @property(SpriteFrame)
     frameDotWhite: SpriteFrame = null;
 
-    private readonly openPlateDuration = 0.5;
     private audioShakeKey = "shake";
     private roundId = 0;
 
@@ -45,7 +44,7 @@ export class Plate extends ObserverComponent {
         if (animated) {
             await AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN);
         } else {
-            AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN, false, 0);
+            this.spinePlate.node.active = false;
         }
     }
 
@@ -70,6 +69,7 @@ export class Plate extends ObserverComponent {
     @render(gc.Rounds.RoundTimeStore, (store) => store.isStartRound)
     async shakePlate(isStartRound: boolean) {
         if (isStartRound) {
+            this.spinePlate.node.active = true;
             await this.closePlate();
             this.playSoundShake();
             AnimationUtils.playSpine(this.spinePlate, PlateAnimation.SHAKE);
