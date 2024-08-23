@@ -78,7 +78,7 @@ export default class Game extends GameComponent {
             return;
         }
         if (isIOS()) {
-            await FunctionUtils.delay(500);
+            await FunctionUtils.delay(1000);
         }
 
         this.showResult(result, true, settlementResult).then(() => {
