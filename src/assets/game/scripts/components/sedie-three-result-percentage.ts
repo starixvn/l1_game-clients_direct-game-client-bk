@@ -12,12 +12,13 @@ export class SeDieThreeResultPercentage extends ResultPercentage {
 
         // Calculate primary percentages
         const redValue = Math.round((count["red"] * 100) / total);
-        const red3Value = Math.round((count["red3"] * 100) / total);
-        const red1Value = Math.round((count["red1"] * 100) / total);
+        const red3Value = Math.round((((count["red3"] * 100) / total) * redValue) / 100);
+        const whiteValue = 100 - redValue;
+        const red1Value = Math.round((((count["red1"] * 100) / total) * whiteValue) / 100);
 
         // Derive secondary values based on relationships
         const red2Value = redValue - red3Value;
-        const whiteValue = 100 - redValue;
+
         const white3Value = whiteValue - red1Value;
 
         percentage["red"] = redValue;
