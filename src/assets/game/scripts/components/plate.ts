@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Node, sp, Sprite, SpriteFrame, UIOpacity } from "cc";
+import { _decorator, Node, sp, Sprite, SpriteFrame } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
@@ -41,15 +41,7 @@ export class Plate extends ObserverComponent {
     private audioShakeKey = "shake";
     private roundId = 0;
 
-    private updateOpacity(opacity: number) {
-        const uiOpacity = this.spinePlate?.node?.getComponent(UIOpacity);
-        if (uiOpacity) {
-            uiOpacity.opacity = opacity;
-        }
-    }
-
     async openPlate(animated: boolean) {
-        this.updateOpacity(animated ? 255 : 0);
         if (animated) {
             await AnimationUtils.playSpine(this.spinePlate, PlateAnimation.OPEN);
         } else {
@@ -58,7 +50,6 @@ export class Plate extends ObserverComponent {
     }
 
     async closePlate() {
-        this.updateOpacity(255);
         await AnimationUtils.playSpine(this.spinePlate, PlateAnimation.CLOSE);
     }
 
