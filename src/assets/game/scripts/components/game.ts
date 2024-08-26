@@ -109,13 +109,11 @@ export default class Game extends GameComponent {
         }
 
         const lastRound = firstJoinGameHistory.roundHistory as any;
-        console.log("lastRound", lastRound);
         if (lastRound) {
             const { result, settlementResult, roundId } = lastRound;
-            const animated = firstJoinGameHistory.animationHighlight;
-            if (animated) {
+            if (firstJoinGameHistory.animationHighlight) {
                 await this.showLastRoundResult(roundId);
-                await this.showResult(result, false, settlementResult);
+                this.showResult(result, false, settlementResult);
                 return;
             }
         }
@@ -131,8 +129,8 @@ export default class Game extends GameComponent {
             return;
         }
 
-        const { result, settlementResult } = history;
-        await this.showResult(result, false, settlementResult);
+        const { result } = history;
+        this.compPlate.setDots(result as IResult);
     }
 
     @render(Rounds.RoundTimeStore, (store) => store.roundState)
