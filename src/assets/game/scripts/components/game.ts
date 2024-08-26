@@ -8,7 +8,6 @@ import Observer from "observer";
 
 import { AudioContainer } from "../../../../extensions/shared-components/assets/game/audios/scripts/component/audio-container";
 import { ChipFlying } from "../../../../extensions/shared-components/assets/game/chip-flying/scripts/components/chip-flying";
-import { CardModel } from "../../../../extensions/shared-components/assets/game/poker-cards/scripts/poker-card";
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
 import { FunctionUtils, isIOS } from "../../../../extensions/shared-components/assets/shared/utils";
 import { siteConfigs } from "../../../scripts/site-configs";
@@ -16,15 +15,10 @@ import { containerOptions, settings } from "../game-settings";
 import { IResult, Plate } from "./plate";
 
 startGame(settings.name, containerOptions, siteConfigs, settings.namespaces);
-const { Rounds, Connection, HideGame, Settlements, FormatUtils, RoundHistories, GameBaccaratX } = gc;
+const { Rounds, RoundHistories } = gc;
 
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
-
-export interface TeamInfo {
-    score: number;
-    cards: CardModel[];
-}
 
 @ccclass
 @observer(settings.name)
@@ -47,6 +41,7 @@ export default class Game extends GameComponent {
     protected enableFixHandleFinish = true;
     private audioContainer: AudioContainer = null;
     private winningResult: WinningResult = null;
+    private histories: gc.RoundHistories.RoundHistory[] = [];
     private soundWinChoice = ["red", "white"];
 
     onLoad() {
@@ -65,7 +60,7 @@ export default class Game extends GameComponent {
             this.compPlate.setDots(result as IResult);
             await this.compPlate.openPlate(hasAnimation);
             this.winningResult.setSettlementResult(settlementResult);
-            this.winningResult.show();
+            hasAnimation ? this.winningResult.show() : this.winningResult.showQuickly();
             const winChoice = this.soundWinChoice.find((choice) => settlementResult[choice]);
             this.playSound(`${winChoice}_wins_${gc.Translator.getLanguageId()}`);
         }
@@ -91,6 +86,22 @@ export default class Game extends GameComponent {
         this.playSound(gc.Audios.AudioIds.RECEIVE_FINISH);
     }
 
+    @render(RoundHistories.RoundHistoryStore, (store) => store.histories)
+    storeHistories(histories: gc.RoundHistories.RoundHistory[]) {
+        if (histories && histories.length > 0) {
+            // this.histories = histories;
+            //only store 2 last round histories
+            const last2RoundHistories = [];
+            for (let i = 0; i < 2; i++) {
+                if (i < histories.length) {
+                    const { roundId, result, settlementResult } = histories[i];
+                    last2RoundHistories.push({ roundId, result, settlementResult });
+                }
+            }
+            this.histories = last2RoundHistories;
+        }
+    }
+
     @render(RoundHistories.RoundHistoryStore, (store) => store.firstJoinGameHistory)
     async renderStaticResult(firstJoinGameHistory: gc.RoundHistories.IFirstJoinGameHistory) {
         if (!firstJoinGameHistory) {
@@ -98,14 +109,30 @@ export default class Game extends GameComponent {
         }
 
         const lastRound = firstJoinGameHistory.roundHistory as any;
+        console.log("lastRound", lastRound);
         if (lastRound) {
-            const { result, settlementResult } = lastRound;
+            const { result, settlementResult, roundId } = lastRound;
             const animated = firstJoinGameHistory.animationHighlight;
             if (animated) {
-                this.showResult(result, false, settlementResult);
+                await this.showLastRoundResult(roundId);
+                await this.showResult(result, false, settlementResult);
                 return;
             }
         }
+    }
+
+    private async showLastRoundResult(currentRoundId: number) {
+        const lastRoundId = currentRoundId - 1;
+        if (lastRoundId < 1) {
+            return;
+        }
+        const history = this.histories.find((roundHistory) => roundHistory.roundId === lastRoundId);
+        if (!history) {
+            return;
+        }
+
+        const { result, settlementResult } = history;
+        await this.showResult(result, false, settlementResult);
     }
 
     @render(Rounds.RoundTimeStore, (store) => store.roundState)
