@@ -8,7 +8,6 @@ import Observer from "observer";
 
 import { AudioContainer } from "../../../../extensions/shared-components/assets/game/audios/scripts/component/audio-container";
 import { ChipFlying } from "../../../../extensions/shared-components/assets/game/chip-flying/scripts/components/chip-flying";
-import { CardModel } from "../../../../extensions/shared-components/assets/game/poker-cards/scripts/poker-card";
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
 import { FunctionUtils, isIOS } from "../../../../extensions/shared-components/assets/shared/utils";
 import { siteConfigs } from "../../../scripts/site-configs";
@@ -20,11 +19,6 @@ const { Rounds, Connection, HideGame, Settlements, FormatUtils, RoundHistories, 
 
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
-
-export interface TeamInfo {
-    score: number;
-    cards: CardModel[];
-}
 
 @ccclass
 @observer(settings.name)
@@ -97,8 +91,6 @@ export default class Game extends GameComponent {
         if (!firstJoinGameHistory) {
             return;
         }
-
-        console.log("join game");
 
         const lastRound = firstJoinGameHistory.roundHistory as any;
         if (lastRound) {
