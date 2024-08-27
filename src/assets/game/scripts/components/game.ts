@@ -68,11 +68,11 @@ export default class Game extends GameComponent {
     }
 
     async renderCurrentFinish(currentFinish: gc.GameServiceMessage.Finish) {
+        this.currentFinish = currentFinish;
         if (!currentFinish || !this.enableFixHandleFinish) {
             return;
         }
         const { result, settlementResult } = currentFinish as any;
-        this.currentFinish = currentFinish;
 
         if (!this.isValidResult(result, settlementResult)) {
             return;
@@ -102,30 +102,11 @@ export default class Game extends GameComponent {
             const { result, settlementResult } = lastRound;
             if (firstJoinGameHistory.animationHighlight) {
                 if (roundTime === 0) {
-                    const interval = 100;
-                    const repeat = 1000 / interval;
-                    console.log("during first 2s");
-                    if (!this.currentFinish) {
-                        const checkFinish = this.schedule(
-                            () => {
-                                console.log("call interval");
-                                if (this.currentFinish) {
-                                    console.log("recieve finish----------", this.currentFinish);
-                                    this.unschedule(checkFinish);
-                                    this.isReceivedFinish = true;
-                                    return;
-                                }
-                            },
-                            interval,
-                            repeat,
-                            0
-                        );
-                        if (!this.isReceivedFinish) {
-                            this.scheduleOnce(() => {
-                                this.showResult(result, false, settlementResult);
-                            }, 1);
-                        }
+                    await FunctionUtils.delay(1000);
+                    if (this.currentFinish) {
+                        return;
                     }
+                    this.showResult(result, false, settlementResult);
                 } else {
                     this.showResult(result, false, settlementResult);
                 }
