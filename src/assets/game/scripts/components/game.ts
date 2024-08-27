@@ -96,6 +96,8 @@ export default class Game extends GameComponent {
         const lastRound = firstJoinGameHistory.roundHistory as any;
         if (lastRound) {
             const { result, settlementResult, roundId } = lastRound;
+            console.log("last Round", lastRound);
+            console.log("last history", this.histories[0].roundId);
             if (firstJoinGameHistory.animationHighlight && roundId >= this.histories[0].roundId) {
                 console.log("join game have finish");
                 this.showResult(result, false, settlementResult);
