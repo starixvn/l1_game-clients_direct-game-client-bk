@@ -42,6 +42,7 @@ export default class Game extends GameComponent {
     private audioContainer: AudioContainer = null;
     private winningResult: WinningResult = null;
     private soundWinChoice = ["red", "white"];
+    private histories: gc.RoundHistories.RoundHistory[] = [];
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
@@ -94,10 +95,9 @@ export default class Game extends GameComponent {
 
         const lastRound = firstJoinGameHistory.roundHistory as any;
         if (lastRound) {
-            const { result, settlementResult } = lastRound;
-            const animated = firstJoinGameHistory.animationHighlight;
-            if (animated) {
-                console.log("join game at settle time");
+            const { result, settlementResult, roundId } = lastRound;
+            if (firstJoinGameHistory.animationHighlight && roundId >= this.histories[0].roundId) {
+                console.log("join game have finish");
                 this.showResult(result, false, settlementResult);
                 return;
             }
@@ -116,5 +116,21 @@ export default class Game extends GameComponent {
     @render(Rounds.RoundTimeStore, (store) => store.isStartingRound)
     disableWinNotice(isStartingRound: boolean) {
         isStartingRound && this.winningResult.hideQuickly();
+    }
+
+    @render(RoundHistories.RoundHistoryStore, (store) => store.histories)
+    storeHistories(histories: gc.RoundHistories.RoundHistory[]) {
+        if (histories && histories.length > 0) {
+            // this.histories = histories;
+            //only store last round histories
+            const lastRoundHistory = [];
+            for (let i = 0; i < 1; i++) {
+                if (i < histories.length) {
+                    const { roundId, result, settlementResult } = histories[i];
+                    lastRoundHistory.push({ roundId, result, settlementResult });
+                }
+            }
+            this.histories = lastRoundHistory;
+        }
     }
 }
