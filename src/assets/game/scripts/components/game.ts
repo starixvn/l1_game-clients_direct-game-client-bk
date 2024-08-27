@@ -108,7 +108,9 @@ export default class Game extends GameComponent {
                     if (!this.currentFinish) {
                         const checkFinish = this.schedule(
                             () => {
+                                console.log("call interval");
                                 if (this.currentFinish) {
+                                    console.log("recieve finish----------", this.currentFinish);
                                     this.unschedule(checkFinish);
                                     this.isReceivedFinish = true;
                                     return;
