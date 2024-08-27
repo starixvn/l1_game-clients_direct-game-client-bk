@@ -43,7 +43,6 @@ export default class Game extends GameComponent {
     private winningResult: WinningResult = null;
     private soundWinChoice = ["red", "white"];
     private currentFinish: gc.GameServiceMessage.Finish = null;
-    private isReceivedFinish = false;
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
@@ -95,7 +94,6 @@ export default class Game extends GameComponent {
         }
         const roundTime = firstJoinGameHistory.roundTime;
         console.log("join game round time", roundTime);
-        console.log("current Finish", this.currentFinish);
 
         const lastRound = firstJoinGameHistory.roundHistory as any;
         if (lastRound) {
