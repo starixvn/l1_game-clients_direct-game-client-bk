@@ -101,9 +101,9 @@ export default class Game extends GameComponent {
         if (lastRound) {
             const { result, settlementResult } = lastRound;
             if (firstJoinGameHistory.animationHighlight) {
-                if (roundTime <= settings.durations.wholeRound && roundTime > settings.durations.wholeRound - 1) {
+                if (roundTime === 0) {
                     const interval = 100;
-                    const repeat = ((settings.durations.wholeRound - roundTime + 1) * 1000) / interval;
+                    const repeat = 1000 / interval;
                     console.log("during first 2s");
                     if (!this.currentFinish) {
                         const checkFinish = this.schedule(
@@ -116,14 +116,14 @@ export default class Game extends GameComponent {
                                     return;
                                 }
                             },
-                            100,
+                            interval,
                             repeat,
                             0
                         );
                         if (!this.isReceivedFinish) {
                             this.scheduleOnce(() => {
                                 this.showResult(result, false, settlementResult);
-                            }, settings.durations.wholeRound - roundTime + 1);
+                            }, 1);
                         }
                     }
                 } else {
