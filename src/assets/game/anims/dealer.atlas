@@ -1,160 +1,195 @@
 
 dealer.png
-size: 551,142
+size: 1024,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-arm L b
+arm-L
   rotate: false
-  xy: 115, 43
-  size: 37, 97
-  orig: 37, 97
+  xy: 475, 109
+  size: 68, 145
+  orig: 68, 145
   offset: 0, 0
   index: -1
-arm R b
-  rotate: true
-  xy: 227, 2
-  size: 41, 95
-  orig: 41, 95
+arm-R
+  rotate: false
+  xy: 396, 108
+  size: 77, 146
+  orig: 77, 146
   offset: 0, 0
   index: -1
 body
   rotate: false
-  xy: 377, 54
-  size: 84, 86
-  orig: 84, 86
+  xy: 2, 34
+  size: 184, 220
+  orig: 184, 220
   offset: 0, 0
   index: -1
-dress
+bracelet L
   rotate: false
-  xy: 286, 46
-  size: 89, 94
-  orig: 89, 94
+  xy: 130, 5
+  size: 24, 27
+  orig: 24, 27
   offset: 0, 0
   index: -1
-ear L
-  rotate: true
-  xy: 463, 59
-  size: 8, 23
-  orig: 8, 23
-  offset: 0, 0
-  index: -1
-ear R
+bracelet R
   rotate: false
-  xy: 540, 48
-  size: 8, 23
-  orig: 8, 23
+  xy: 107, 3
+  size: 21, 29
+  orig: 21, 29
   offset: 0, 0
   index: -1
-eyes close
-  rotate: true
-  xy: 366, 3
-  size: 41, 10
-  orig: 41, 10
-  offset: 0, 0
-  index: -1
-hair back
-  rotate: true
-  xy: 213, 45
-  size: 95, 71
-  orig: 95, 71
-  offset: 0, 0
-  index: -1
-hair back L
+earring-L
   rotate: false
-  xy: 44, 40
-  size: 69, 100
-  orig: 69, 107
-  offset: 0, 7
+  xy: 188, 38
+  size: 8, 13
+  orig: 8, 13
+  offset: 0, 0
   index: -1
-hair back R
+earring-R
   rotate: false
-  xy: 154, 44
-  size: 57, 96
-  orig: 59, 99
-  offset: 0, 3
-  index: -1
-hair front L a
-  rotate: true
-  xy: 324, 3
-  size: 41, 40
-  orig: 41, 40
+  xy: 198, 40
+  size: 6, 11
+  orig: 6, 11
   offset: 0, 0
   index: -1
-hair front L b
+eye-close
   rotate: false
-  xy: 463, 69
-  size: 55, 71
-  orig: 55, 71
+  xy: 156, 7
+  size: 76, 25
+  orig: 76, 25
   offset: 0, 0
   index: -1
-hair front R
-  rotate: true
-  xy: 98, 7
-  size: 31, 37
-  orig: 31, 37
-  offset: 0, 0
-  index: -1
-head
-  rotate: true
-  xy: 444, 3
-  size: 49, 63
-  orig: 49, 63
-  offset: 0, 0
-  index: -1
-idle arm L a
-  rotate: true
-  xy: 509, 5
-  size: 62, 29
-  orig: 62, 29
-  offset: 0, 0
-  index: -1
-idle hand L
-  rotate: true
-  xy: 73, 4
-  size: 34, 23
-  orig: 35, 23
-  offset: 0, 0
-  index: -1
-idle hand L shadow
-  rotate: true
-  xy: 520, 73
-  size: 28, 22
-  orig: 29, 22
-  offset: 0, 0
-  index: -1
-idle hand R
+face
   rotate: false
-  xy: 137, 2
-  size: 88, 39
-  orig: 88, 39
+  xy: 508, 10
+  size: 89, 97
+  orig: 89, 97
   offset: 0, 0
   index: -1
-idle hand shadow
+finger-R
+  rotate: false
+  xy: 188, 53
+  size: 38, 11
+  orig: 38, 11
+  offset: 0, 0
+  index: -1
+ghe
   rotate: true
-  xy: 2, 5
-  size: 135, 40
-  orig: 135, 41
+  xy: 188, 66
+  size: 188, 150
+  orig: 188, 150
   offset: 0, 0
   index: -1
-neckle
+hair side-R-1
   rotate: false
-  xy: 44, 3
-  size: 27, 35
-  orig: 27, 35
+  xy: 599, 7
+  size: 33, 106
+  orig: 33, 106
   offset: 0, 0
   index: -1
-neckle shadow
+hair side-R-2
   rotate: false
-  xy: 520, 103
-  size: 29, 37
-  orig: 29, 37
+  xy: 634, 17
+  size: 24, 96
+  orig: 24, 96
   offset: 0, 0
   index: -1
-pelvis
+hair-back
+  rotate: true
+  xy: 355, 2
+  size: 96, 151
+  orig: 96, 151
+  offset: 0, 0
+  index: -1
+hair-side-L-1
+  rotate: true
+  xy: 2, 3
+  size: 29, 103
+  orig: 29, 103
+  offset: 0, 0
+  index: -1
+hair-side-L-2
   rotate: false
-  xy: 378, 2
-  size: 64, 50
-  orig: 64, 50
+  xy: 638, 164
+  size: 20, 90
+  orig: 20, 90
+  offset: 0, 0
+  index: -1
+hair-top-1
+  rotate: false
+  xy: 328, 8
+  size: 25, 56
+  orig: 25, 56
+  offset: 0, 0
+  index: -1
+hair-top-2
+  rotate: false
+  xy: 234, 3
+  size: 33, 61
+  orig: 33, 61
+  offset: 0, 0
+  index: -1
+hair-top-3
+  rotate: false
+  xy: 304, 6
+  size: 22, 58
+  orig: 22, 58
+  offset: 0, 0
+  index: -1
+hair-top-4
+  rotate: false
+  xy: 269, 4
+  size: 33, 60
+  orig: 33, 60
+  offset: 0, 0
+  index: -1
+hair-top-5
+  rotate: false
+  xy: 704, 191
+  size: 54, 63
+  orig: 54, 63
+  offset: 0, 0
+  index: -1
+hair-top-6
+  rotate: false
+  xy: 660, 61
+  size: 39, 54
+  orig: 39, 54
+  offset: 0, 0
+  index: -1
+hand L 1
+  rotate: true
+  xy: 660, 186
+  size: 68, 42
+  orig: 68, 42
+  offset: 0, 0
+  index: -1
+hand-L
+  rotate: false
+  xy: 638, 117
+  size: 80, 45
+  orig: 80, 45
+  offset: 0, 0
+  index: -1
+hand-R
+  rotate: true
+  xy: 340, 100
+  size: 154, 54
+  orig: 154, 54
+  offset: 0, 0
+  index: -1
+shadow handL
+  rotate: true
+  xy: 589, 115
+  size: 139, 47
+  orig: 139, 47
+  offset: 0, 0
+  index: -1
+shadow handR
+  rotate: true
+  xy: 545, 111
+  size: 143, 42
+  orig: 143, 42
   offset: 0, 0
   index: -1

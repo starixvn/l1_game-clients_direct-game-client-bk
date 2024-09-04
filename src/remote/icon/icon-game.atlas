@@ -1,69 +1,209 @@
 
 icon-game.png
-size: 264,489
+size: 2048,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-100x
-  rotate: true
-  xy: 207, 374
-  size: 113, 55
-  orig: 113, 55
-  offset: 0, 0
-  index: -1
-bg
-  rotate: true
-  xy: 2, 285
-  size: 202, 203
-  orig: 202, 203
-  offset: 0, 0
-  index: -1
-icon-pf
-  rotate: true
-  xy: 207, 328
-  size: 44, 46
-  orig: 46, 49
-  offset: 1, 1
-  index: -1
-labai8
-  rotate: true
-  xy: 2, 70
-  size: 103, 126
-  orig: 103, 126
-  offset: 0, 0
-  index: -1
-labaiA
-  rotate: true
-  xy: 130, 70
-  size: 107, 124
-  orig: 114, 128
-  offset: 6, 3
-  index: -1
-label
+bg-game
   rotate: false
-  xy: 2, 2
-  size: 175, 66
-  orig: 175, 66
+  xy: 2, 52
+  size: 202, 202
+  orig: 202, 202
   offset: 0, 0
   index: -1
-light
+coins
   rotate: true
-  xy: 207, 304
-  size: 22, 24
-  orig: 24, 24
-  offset: 1, 0
+  xy: 283, 92
+  size: 162, 102
+  orig: 162, 102
+  offset: 0, 0
   index: -1
-sangA
+layer-3d
   rotate: true
-  xy: 2, 175
-  size: 108, 126
-  orig: 114, 129
-  offset: 5, 3
+  xy: 206, 55
+  size: 199, 75
+  orig: 199, 75
+  offset: 0, 0
   index: -1
-sangb
+plate
   rotate: true
-  xy: 130, 179
-  size: 104, 128
-  orig: 105, 129
-  offset: 1, 0
+  xy: 387, 109
+  size: 145, 77
+  orig: 145, 77
+  offset: 0, 0
+  index: -1
+plate-top
+  rotate: true
+  xy: 414, 12
+  size: 95, 72
+  orig: 95, 72
+  offset: 0, 0
+  index: -1
+red-1
+  rotate: true
+  xy: 809, 3
+  size: 69, 75
+  orig: 69, 75
+  offset: 0, 0
+  index: -1
+red-2
+  rotate: false
+  xy: 979, 192
+  size: 61, 62
+  orig: 61, 62
+  offset: 0, 0
+  index: -1
+white
+  rotate: true
+  xy: 659, 2
+  size: 63, 64
+  orig: 63, 64
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_00
+  rotate: false
+  xy: 283, 3
+  size: 67, 87
+  orig: 67, 87
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_01
+  rotate: false
+  xy: 782, 165
+  size: 68, 89
+  orig: 68, 89
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_02
+  rotate: false
+  xy: 785, 74
+  size: 68, 89
+  orig: 68, 89
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_03
+  rotate: false
+  xy: 715, 70
+  size: 68, 91
+  orig: 68, 91
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_04
+  rotate: false
+  xy: 645, 67
+  size: 68, 92
+  orig: 68, 92
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_05
+  rotate: false
+  xy: 706, 163
+  size: 74, 91
+  orig: 74, 91
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_06
+  rotate: false
+  xy: 546, 160
+  size: 76, 94
+  orig: 76, 94
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_07
+  rotate: false
+  xy: 567, 64
+  size: 76, 94
+  orig: 76, 94
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_08
+  rotate: false
+  xy: 488, 64
+  size: 77, 94
+  orig: 77, 94
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_09
+  rotate: false
+  xy: 466, 160
+  size: 78, 94
+  orig: 78, 94
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_10
+  rotate: true
+  xy: 953, 11
+  size: 79, 64
+  orig: 79, 64
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_11
+  rotate: false
+  xy: 624, 161
+  size: 80, 93
+  orig: 80, 93
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_12
+  rotate: true
+  xy: 915, 92
+  size: 80, 62
+  orig: 80, 62
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_13
+  rotate: true
+  xy: 912, 174
+  size: 80, 65
+  orig: 80, 65
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_14
+  rotate: true
+  xy: 886, 3
+  size: 81, 65
+  orig: 81, 65
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_15
+  rotate: false
+  xy: 725, 3
+  size: 82, 65
+  orig: 82, 65
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_16
+  rotate: true
+  xy: 852, 171
+  size: 83, 58
+  orig: 83, 58
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_17
+  rotate: true
+  xy: 855, 86
+  size: 83, 58
+  orig: 83, 58
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_18
+  rotate: false
+  xy: 488, 2
+  size: 83, 60
+  orig: 83, 60
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_19
+  rotate: false
+  xy: 573, 3
+  size: 84, 59
+  orig: 84, 59
+  offset: 0, 0
+  index: -1
+wild_vfx_a_03b_add_20
+  rotate: true
+  xy: 352, 5
+  size: 85, 60
+  orig: 85, 60
+  offset: 0, 0
   index: -1

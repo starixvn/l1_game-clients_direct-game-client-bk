@@ -1,28 +1,24 @@
+import { WinningResult } from "./../../../../extensions/shared-components/assets/shared/common-components/winning-result/scripts/winning-result";
+import "./../../../resources/i18n";
+
 import gc from "@sg/game-client-base";
 import { _decorator, Node } from "cc";
 import { startGame } from "db://shared-components/shared/scripts/startup";
 import Observer from "observer";
-import { BaccaratXCardsUI } from "../../../../extensions/shared-components/assets/game-baccarat/cards/baccarat-x-cards-ui";
+
 import { AudioContainer } from "../../../../extensions/shared-components/assets/game/audios/scripts/component/audio-container";
 import { ChipFlying } from "../../../../extensions/shared-components/assets/game/chip-flying/scripts/components/chip-flying";
-import { CardModel } from "../../../../extensions/shared-components/assets/game/poker-cards/scripts/poker-card";
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
-import { WinningResult } from "../../../../extensions/shared-components/assets/shared/common-components/winning-result/scripts/winning-result";
-import { FunctionUtils } from "../../../../extensions/shared-components/assets/shared/utils";
+import { FunctionUtils, isIOS } from "../../../../extensions/shared-components/assets/shared/utils";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
-import "./../../../resources/i18n";
+import { IResult, Plate } from "./plate";
 
 startGame(settings.name, containerOptions, siteConfigs, settings.namespaces);
 const { Rounds, Connection, HideGame, Settlements, FormatUtils, RoundHistories, GameBaccaratX } = gc;
 
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
-
-export interface TeamInfo {
-    score: number;
-    cards: CardModel[];
-}
 
 @ccclass
 @observer(settings.name)
@@ -33,26 +29,25 @@ export default class Game extends GameComponent {
     override containerOptions = containerOptions;
 
     @property(Node)
-    nodeBaccaratCardsUi: Node = null;
-
-    @property(Node)
-    nodeWinNotice: Node = null;
-
-    @property(Node)
     nodeAudioContainer: Node = null;
 
-    baccaratXCardsUi: BaccaratXCardsUI = null;
+    @property(Node)
+    nodePlate: Node = null;
 
+    @property(Node)
+    nodeWinning: Node = null;
+
+    compPlate: Plate = null;
     protected enableFixHandleFinish = true;
-    private currentCardIndexInGame = -1;
-    private cutCardIndexInGame = 0;
     private audioContainer: AudioContainer = null;
-
-    private soundWinChoice = ["player", "banker", "tie"];
+    private winningResult: WinningResult = null;
+    private soundWinChoice = ["red", "white"];
+    private currentFinish: gc.GameServiceMessage.Finish = null;
 
     onLoad() {
         this.audioContainer = this.nodeAudioContainer.getComponent(AudioContainer);
-        this.baccaratXCardsUi = this.nodeBaccaratCardsUi.getComponent(BaccaratXCardsUI);
+        this.compPlate = this.nodePlate.getComponent(Plate);
+        this.winningResult = this.nodeWinning.getComponent(WinningResult);
         super.onLoad();
     }
 
@@ -62,35 +57,29 @@ export default class Game extends GameComponent {
         settlementResult: gc.GameServiceMessage.TSettlementResult
     ) {
         if (result) {
-            const winning = this.getWinningResult();
-            winning.hideQuickly();
-            if (hasAnimation) {
-                await this.baccaratXCardsUi.openCards(result as any, settlementResult, hasAnimation);
-            } else {
-                this.baccaratXCardsUi.openCards(result as any, settlementResult, hasAnimation);
-            }
+            this.compPlate.setDots(result as IResult);
+            await this.compPlate.openPlate(hasAnimation);
+            this.winningResult.setSettlementResult(settlementResult);
+            this.winningResult.show();
             const winChoice = this.soundWinChoice.find((choice) => settlementResult[choice]);
-            this.playSound(`${winChoice}-${gc.Translator.getLanguageId()}`);
-            winning?.setSettlementResult(settlementResult);
-            winning?.show();
+            this.playSound(`${winChoice}_wins_${gc.Translator.getLanguageId()}`);
         }
     }
 
-    getWinningResult() {
-        return this.nodeWinNotice.getComponent(WinningResult);
-    }
-
-    renderCurrentFinish(currentFinish: gc.GameServiceMessage.Finish) {
+    async renderCurrentFinish(currentFinish: gc.GameServiceMessage.Finish) {
+        this.currentFinish = currentFinish;
         if (!currentFinish || !this.enableFixHandleFinish) {
             return;
         }
-        const { result, settlementResult, usedCardIndexes } = currentFinish as any;
+        const { result, settlementResult } = currentFinish as any;
 
         if (!this.isValidResult(result, settlementResult)) {
             return;
         }
+        if (isIOS()) {
+            await FunctionUtils.delay(800);
+        }
 
-        this.baccaratXCardsUi.currentCardIndex = usedCardIndexes[0];
         this.showResult(result, true, settlementResult).then(() => {
             this.finishShowResult(result, settlementResult);
             this.chipFlying.callActionPayChips();
@@ -98,70 +87,29 @@ export default class Game extends GameComponent {
         this.playSound(gc.Audios.AudioIds.RECEIVE_FINISH);
     }
 
-    @render(GameBaccaratX.Shoe.ShoeStore, (store) => store.shoeInfo)
-    renderShoeInfo(shoeInfo: gc.GameServiceMessage.ShoeInfo) {
-        if (shoeInfo) {
-            const currentCardIndex = shoeInfo.currentIndex ?? shoeInfo.burnedCards;
-            if (this.currentCardIndexInGame === -1) {
-                this.currentCardIndexInGame = currentCardIndex;
-                this.updateCutCardIndex(shoeInfo?.cutCardIndex);
-            }
-        }
-    }
-
-    updateCutCardIndex(cutCardIndex: number) {
-        this.cutCardIndexInGame = cutCardIndex;
-        this.baccaratXCardsUi && (this.baccaratXCardsUi.cutCardIndex = cutCardIndex);
-    }
-
     @render(RoundHistories.RoundHistoryStore, (store) => store.firstJoinGameHistory)
     async renderStaticResult(firstJoinGameHistory: gc.RoundHistories.IFirstJoinGameHistory) {
         if (!firstJoinGameHistory) {
             return;
         }
-        this.baccaratXCardsUi.initCards();
-        this.baccaratXCardsUi?.updateStacksCardBox(this?.currentCardIndexInGame, this?.cutCardIndexInGame);
+        const roundTime = firstJoinGameHistory.roundTime;
+        console.log("join game round time", roundTime);
+
         const lastRound = firstJoinGameHistory.roundHistory as any;
         if (lastRound) {
-            const { result, settlementResult, usedCardIndexes } = lastRound;
-            const animated = firstJoinGameHistory.animationHighlight;
-            if (animated) {
-                this.parseOddsMultipliers(lastRound);
-                this.baccaratXCardsUi.currentCardIndex = usedCardIndexes[0];
-                this.showResult(result, false, settlementResult);
-                return;
-            }
-
-            this.baccaratXCardsUi.currentCardIndex = this.currentCardIndexInGame;
-            await this.baccaratXCardsUi.draw6Cards(false);
-        } else {
-            if (firstJoinGameHistory.roundTime < settings.durations.placingBet + settings.durations.startRound) {
-                await FunctionUtils.waitUntil(
-                    () => {
-                        return this.currentCardIndexInGame !== -1;
-                    },
-                    100,
-                    1000
-                );
-                this.baccaratXCardsUi.currentCardIndex = this.currentCardIndexInGame;
-                await this.baccaratXCardsUi.draw6Cards(false);
+            const { result, settlementResult } = lastRound;
+            if (firstJoinGameHistory.animationHighlight) {
+                if (roundTime === 0) {
+                    await FunctionUtils.delay(1000);
+                    if (this.currentFinish) {
+                        return;
+                    }
+                    this.showResult(result, false, settlementResult);
+                } else {
+                    this.showResult(result, false, settlementResult);
+                }
             }
         }
-    }
-
-    @handle(GameBaccaratX.Multiplier.BaccaratMultipliersHandler, (handler, lastRound) => handler.parseOddsMultiplers(lastRound))
-    parseOddsMultipliers(lastRound) {
-        return lastRound;
-    }
-
-    @render(Rounds.RoundTimeStore, (store) => store.isStartingRound)
-    disableWinNotice(isStartingRound: boolean) {
-        isStartingRound && this.getWinningResult()?.hideQuickly();
-    }
-
-    @render(GameBaccaratX.Shoe.ShoeStore, (store) => store.newShoePhase)
-    disableWinNotice1(newShoePhase: boolean) {
-        newShoePhase && this.getWinningResult()?.hideQuickly();
     }
 
     @render(Rounds.RoundTimeStore, (store) => store.roundState)
@@ -171,5 +119,10 @@ export default class Game extends GameComponent {
         } else if (roundState === Rounds.ROUND_STATE.SHOW_RESULT) {
             this.audioContainer.updateVolumeMusicSource(1, 3);
         }
+    }
+
+    @render(Rounds.RoundTimeStore, (store) => store.isStartingRound)
+    disableWinNotice(isStartingRound: boolean) {
+        isStartingRound && this.winningResult.hideQuickly();
     }
 }
