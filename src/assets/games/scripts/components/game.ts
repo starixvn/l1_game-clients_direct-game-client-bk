@@ -1,6 +1,3 @@
-import { WinningResult } from "./../../../../extensions/shared-components/assets/shared/common-components/winning-result/scripts/winning-result";
-import "./../../../resources/i18n";
-
 import gc from "@sg/game-client-base";
 import { _decorator, Node } from "cc";
 import { startGame } from "db://shared-components/shared/scripts/startup";
@@ -9,6 +6,7 @@ import Observer from "observer";
 import { AudioContainer } from "../../../../extensions/shared-components/assets/game/audios/scripts/component/audio-container";
 import { ChipFlying } from "../../../../extensions/shared-components/assets/game/chip-flying/scripts/components/chip-flying";
 import GameComponent from "../../../../extensions/shared-components/assets/game/scripts/components/game-component";
+import { WinningResult } from "../../../../extensions/shared-components/assets/shared/common-components/winning-result/scripts/winning-result";
 import { FunctionUtils, isIOS } from "../../../../extensions/shared-components/assets/shared/utils";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";

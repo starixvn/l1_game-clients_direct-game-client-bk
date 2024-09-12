@@ -12,35 +12,57 @@
       "startScene": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
       "scenes": [
         {
-          "url": "db://assets/game/game.scene",
-          "uuid": "4229fd91-1ded-407f-b130-7b678b820c27",
-          "inBundle": false
-        },
-        {
-          "url": "db://assets/game/splash/splash.scene",
-          "uuid": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
-          "inBundle": false
-        },
-        {
           "url": "db://shared-components/feature-structure/scene.scene",
-          "uuid": "b97b166d-3dd1-4968-8fa8-488f447e05b0",
-          "inBundle": false
+          "uuid": "b97b166d-3dd1-4968-8fa8-488f447e05b0"
         },
         {
           "url": "db://shared-components/session-timeout/session-timeout.scene",
-          "uuid": "1b4ca76d-3ce5-41e6-a47c-0fb1f85bb3f4",
-          "inBundle": false
+          "uuid": "1b4ca76d-3ce5-41e6-a47c-0fb1f85bb3f4"
         },
         {
           "url": "db://shared-components/under-maintenance/under-maintenance.scene",
-          "uuid": "3640a00f-a2ed-4aec-b369-779ede63f5df",
-          "inBundle": false
+          "uuid": "3640a00f-a2ed-4aec-b369-779ede63f5df"
+        },
+        {
+          "url": "db://shared-components/game/around-table-player/around-table-player.scene",
+          "uuid": "3a56c048-a4f9-4ea2-90c1-25349467f933"
+        },
+        {
+          "url": "db://shared-components/game/scoreboards/scoreboard.scene",
+          "uuid": "9ec9624e-8ef6-4e81-bf0e-34a4eab4a438"
+        },
+        {
+          "url": "db://shared-components/game-crash/bet-input/demo/demo-bet-input.scene",
+          "uuid": "dcfeaa90-469c-49f2-8586-5626f155659b"
+        },
+        {
+          "url": "db://shared-components/game-instant/common-components/notice/notice-instant-test.scene",
+          "uuid": "733bea1f-4a91-4822-906e-7b6c60563dbb"
+        },
+        {
+          "url": "db://shared-components/game-instant/common-components/prompt-message/prompt-message-instant-test.scene",
+          "uuid": "3497b87d-7625-4274-8685-4e5a47b27cf4"
+        },
+        {
+          "url": "db://shared-components/shared/shared-bundle/fonts/test-font.scene",
+          "uuid": "ef8d96c0-1d8b-4754-bba7-025d93dbdba1",
+          "bundle": "db://shared-components/shared/shared-bundle"
+        },
+        {
+          "url": "db://assets/splash/splash.scene",
+          "uuid": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39"
+        },
+        {
+          "url": "db://assets/lobby/game.scene",
+          "uuid": "f1a24171-80f0-4e6b-9ca6-da5e97aff2e9"
         }
       ],
       "polyfills": {
         "asyncFunctions": true
       },
-      "md5Cache": false
+      "md5Cache": true,
+      "bundleConfigs": [],
+      "debug": false
     },
     "options": {
       "web-mobile": {

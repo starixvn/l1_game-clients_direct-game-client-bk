@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "game",
+    "_name": "game-bk",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -56,7 +56,7 @@
     "_globals": {
       "__id__": 891
     },
-    "_id": "4229fd91-1ded-407f-b130-7b678b820c27"
+    "_id": "02a087b9-716c-49e8-9e6c-5a6b53f6eb02"
   },
   {
     "__type__": "cc.Node",
