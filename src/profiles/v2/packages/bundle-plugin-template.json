@@ -1,0 +1,23 @@
+{
+  "__version__": "1.0.0",
+  "builder": {
+    "taskOptionsMap": {
+      "1681353552761": {
+        "remoteAddress": "https://www.cocos.com/",
+        "enterCocos": "",
+        "selectTest": "option2",
+        "objectTest": {
+          "number": 80,
+          "string": "cocos",
+          "boolean": true
+        },
+        "arrayTest": [
+          80,
+          "cocos",
+          true
+        ]
+      }
+    },
+    "__version__": "1.3.6"
+  }
+}

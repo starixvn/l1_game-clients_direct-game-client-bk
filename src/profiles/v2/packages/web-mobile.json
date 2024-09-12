@@ -62,19 +62,20 @@
       },
       "md5Cache": true,
       "bundleConfigs": [],
-      "debug": false
+      "debug": true
     },
     "options": {
       "web-mobile": {
         "orientation": "landscape",
-        "embedWebDebugger": false,
-        "__version__": "1.0.1"
+        "embedWebDebugger": true,
+        "__version__": "1.0.1",
+        "cullEngineAsmJsModule": false
       }
     },
     "taskOptionsMap": {
       "1681353552761": {
         "orientation": "landscape",
-        "embedWebDebugger": false,
+        "embedWebDebugger": true,
         "__version__": "1.0.1",
         "cullEngineAsmJsModule": false
       }
