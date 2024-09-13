@@ -3,9 +3,6 @@ FROM hub.lumigame.com/base/nginx:brotli-1.20.2-zlib as builder
 COPY ./src/build/web-mobile/ /app
 RUN rm -rf /app/assets
 
-# Show the folder contents for debugging
-RUN ls ./src/build/web-mobile/assets/
-
 COPY ./src/build/web-mobile/assets/main /assets/main
 COPY ./src/build/web-mobile/assets/resources /assets/resources
 COPY ./src/build/web-mobile/assets/internal /assets/internal
