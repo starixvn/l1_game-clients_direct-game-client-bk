@@ -38,27 +38,22 @@ export const load: BuildHook.load = async function () {
 
 export const onBeforeBuild: BuildHook.onBeforeBuild = async function (options: ITaskOptions, result: IBuildResult) {
     // Todo some thing
-    // log(`${PACKAGE_NAME}.webTestOption`, "onBeforeBuild");
 };
 
 export const onBeforeCompressSettings: BuildHook.onBeforeCompressSettings = async function (options: ITaskOptions, result: IBuildResult) {
-    // const pkgOptions = options?.packages[PACKAGE_NAME];
-    // if (pkgOptions?.webTestOption) {
-    //     console.debug("webTestOption", true);
-    // }
     // Todo some thing
     console.debug("get settings test", result.settings);
 };
 
 export const onAfterCompressSettings: BuildHook.onAfterCompressSettings = async function (options: ITaskOptions, result: IBuildResult) {
     // Todo some thing
-    // console.log("webTestOption", "onAfterCompressSettings");
 };
 
 export const onAfterBuild: BuildHook.onAfterBuild = async function (options: ITaskOptions, result: IBuildResult) {
     // customize create file version.json
     customizeAfterBuild(result);
     packageUtils.mount();
+    
     // change the uuid to test
     const uuidTestMap = {
         image: "57520716-48c8-4a19-8acf-41c9f8777fb0",
