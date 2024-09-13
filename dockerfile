@@ -4,7 +4,7 @@ COPY ./src/build/web-mobile/ /app
 RUN rm -rf /app/assets
 
 # Show the folder contents for debugging
-RUN ls -la ./src/build/web-mobile/assets
+RUN ls ./src/build/web-mobile/assets/
 
 COPY ./src/build/web-mobile/assets/main /assets/main
 COPY ./src/build/web-mobile/assets/resources /assets/resources

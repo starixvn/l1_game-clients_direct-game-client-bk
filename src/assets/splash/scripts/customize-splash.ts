@@ -8,7 +8,7 @@ const { observer, render, handle } = Observer;
 @observer
 export class CustomizeSplash extends Component {
     onLoad() {
-        this.initializeBundleManager();
+        //this.initializeBundleManager();
     }
 
     initializeBundleManager() {
