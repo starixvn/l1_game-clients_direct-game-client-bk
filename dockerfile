@@ -1,7 +1,11 @@
 FROM hub.lumigame.com/base/nginx:brotli-1.20.2-zlib as builder
 
+RUN echo "Copy assets..."
+
 COPY ./src/build/web-mobile/ /app
 RUN rm -rf /app/assets
+
+RUN ls -la ./src/build/web-mobile/assets/
 
 COPY ./src/build/web-mobile/assets/main /assets/main
 COPY ./src/build/web-mobile/assets/resources /assets/resources
