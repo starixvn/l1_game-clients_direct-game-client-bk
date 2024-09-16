@@ -11,6 +11,7 @@ COPY ./src/build/web-mobile/assets/internal /assets/internal
 COPY ./src/build/web-mobile/assets/shared-bundle /assets/shared-bundle
 COPY ./src/build/web-mobile/assets/shared-instant-bundle /assets/shared-instant-bundle
 COPY ./src/build/web-mobile/index.html /assets/index.html
+COPY ./src/build/web-mobile/assets/versions.json /assets/versions.json
 
 FROM hub.lumigame.com/base/nginx:brotli-1.20.2-zlib as publish
 
