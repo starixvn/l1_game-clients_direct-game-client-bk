@@ -62,7 +62,7 @@
       },
       "md5Cache": true,
       "bundleConfigs": [],
-      "debug": true
+      "debug": false
     },
     "options": {
       "web-mobile": {
