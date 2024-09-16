@@ -5,8 +5,6 @@ RUN echo "Copy assets..."
 COPY ./src/build/web-mobile/ /app
 RUN rm -rf /app/assets
 
-RUN ls -la ./src/build/web-mobile/assets/
-
 COPY ./src/build/web-mobile/assets/main /assets/main
 COPY ./src/build/web-mobile/assets/resources /assets/resources
 COPY ./src/build/web-mobile/assets/internal /assets/internal
