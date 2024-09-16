@@ -1,4 +1,5 @@
 import gc from "@sg/game-client-base";
+import { siteConfigs } from "./site-configs";
 
 const { UrlUtils } = gc;
 export interface GameConfiguration {
@@ -23,12 +24,13 @@ declare global {
     }
 }
 
-export async function initialize() {
+export async function initGameConfiguration() {
+    console.log("initGameConfiguration----");
     window.gameConfigurations = [
         {
             id: 2,
-            name: "Sedie",
-            key: "Sedie",
+            name: "sedie",
+            key: "sedie",
             remoteBundle: {
                 dependsOn: [],
             },
@@ -40,6 +42,7 @@ export async function initialize() {
 
 function initializeBundleInfos() {
     const isDevelopmentMode = window.location.hostname === "localhost";
+    console.log("isDevelopmentMode:", isDevelopmentMode);
     const games = getAllGameConfigurations()
         .filter((configuration) => !!configuration.remoteBundle)
         .map((configuration) => ({ gameId: configuration.id, ...configuration.remoteBundle }));
@@ -54,10 +57,11 @@ function initializeBundleInfos() {
 
         return result;
     }, {});
+    console.log("bundle info - develop: ", developmentMode);
 
     const productionMode = games.reduce((result, configs) => {
         result[configs.gameId] = {
-            url: "", //UrlUtils.buildProxyUrl(siteConfigs, `/direct-client-${configs.gameId}`),
+            url: UrlUtils.buildProxyUrl(siteConfigs, `/direct-client-${configs.gameId}`),
             name: configs.gameId,
             useMd5Cache: true,
             dependencies: configs.dependsOn,
@@ -65,6 +69,8 @@ function initializeBundleInfos() {
 
         return result;
     }, {});
+
+    console.log("bundle info - production: ", productionMode);
 
     if (!window.bundleManagement) {
         window.bundleManagement = {};
