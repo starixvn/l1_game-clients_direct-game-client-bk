@@ -12,4 +12,5 @@ window.envConfig = {
     defaultLanguage: "en",
     storagePrefixKey: "bac81",
     backgroundNoTranslate: true,
+    entrySpecific: "sit",
 };

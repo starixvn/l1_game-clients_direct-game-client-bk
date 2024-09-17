@@ -11,4 +11,5 @@ window.envConfig = {
     SGConnectSubDomain: "l2-connect-uat",
     storagePrefixKey: "bac81",
     backgroundNoTranslate: true,
+    entrySpecific: "uat",
 };
