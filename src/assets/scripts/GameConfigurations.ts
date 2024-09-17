@@ -25,7 +25,6 @@ declare global {
 }
 
 export async function initGameConfiguration() {
-    console.log("initGameConfiguration----");
     window.gameConfigurations = [
         {
             id: 2,
@@ -42,7 +41,6 @@ export async function initGameConfiguration() {
 
 function initializeBundleInfos() {
     const isDevelopmentMode = window.location.hostname === "localhost";
-    console.log("isDevelopmentMode:", isDevelopmentMode);
     const games = getAllGameConfigurations()
         .filter((configuration) => !!configuration.remoteBundle)
         .map((configuration) => ({ gameId: configuration.id, ...configuration.remoteBundle }));
@@ -57,7 +55,6 @@ function initializeBundleInfos() {
 
         return result;
     }, {});
-    console.log("bundle info - develop: ", developmentMode);
 
     const productionMode = games.reduce((result, configs) => {
         result[configs.gameId] = {
@@ -69,8 +66,6 @@ function initializeBundleInfos() {
 
         return result;
     }, {});
-
-    console.log("bundle info - production: ", productionMode);
 
     if (!window.bundleManagement) {
         window.bundleManagement = {};
